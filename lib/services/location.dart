@@ -7,6 +7,8 @@ class Location{
    Location();
 
    Future<void> getCurrentLocation()async{
+     await Geolocator.checkPermission();
+     await Geolocator.requestPermission();
     try {
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.low);
